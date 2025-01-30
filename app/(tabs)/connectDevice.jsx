@@ -5,9 +5,9 @@ import qs from "qs";
 export default function ConnectDevice({ navigation }) {
     const [ssid, setSsid] = useState("");
     const [password, setPassword] = useState("");
-    const [senderEmail, setSenderEmail] = useState("");
     const [receiverEmail, setReceiverEmail] = useState("");
-    const [appPassword, setAppPassword] = useState("");
+    const [senderEmail, setSenderEmail] = useState("");
+    const [emailPassword, setEmailPassword] = useState("");
     const [buttonText, setButtonText] = useState("Connect"); // State for button text
 
     const handleConnect = async () => {
@@ -15,13 +15,13 @@ export default function ConnectDevice({ navigation }) {
         const data = {
             ssid,
             password,
-            senderEmail,
             receiverEmail,
-            appPassword,
+            senderEmail,
+            emailPassword,
         };
 
         try {
-            const response = await fetch("http://invalid-url", { // Use an incorrect URL to test failure
+            const response = await fetch("http://192.168.4.1", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -39,7 +39,6 @@ export default function ConnectDevice({ navigation }) {
                 Alert.alert("Connection Failed", "Failed to connect to the device.");
                 setButtonText("Try Again"); // Change button text on failure
                 console.log("Response not OK:", response.status);
-                navigation.navigate("/home");
             }
         } catch (error) {
             Alert.alert("Error", "An error occurred while connecting to the device.");
@@ -81,8 +80,8 @@ export default function ConnectDevice({ navigation }) {
             <TextInput
                 style={styles.input}
                 placeholder="App Password"
-                value={appPassword}
-                onChangeText={setAppPassword}
+                value={emailPassword}
+                onChangeText={setEmailPassword}
                 secureTextEntry
             />
             <Button title={buttonText} onPress={handleConnect} /> {/* Use buttonText state */}
