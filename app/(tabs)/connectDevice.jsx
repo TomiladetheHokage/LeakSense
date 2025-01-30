@@ -34,11 +34,12 @@ export default function ConnectDevice({ navigation }) {
                 setButtonText("Connect"); // Reset button text on success
                 // Navigate to another screen if needed
                 console.log("Response OK!:", response.status);
-                navigation.navigate("Home");
+                router.push("/home");
             } else {
                 Alert.alert("Connection Failed", "Failed to connect to the device.");
                 setButtonText("Try Again"); // Change button text on failure
                 console.log("Response not OK:", response.status);
+                navigation.navigate("/home");
             }
         } catch (error) {
             Alert.alert("Error", "An error occurred while connecting to the device.");
