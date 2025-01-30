@@ -22,7 +22,7 @@ export default function App() {
     const fetchGasLevel = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch("https://192.168.117.93/");
+            const response = await fetch("http://192.168.137.100/gasReading");
             const text = await response.text();
             const level = extractGasLevel(text);
             setGasLevel(level);
@@ -58,7 +58,7 @@ export default function App() {
                         },
                     ],
                 }}
-                width={Dimensions.get("window").width - 40} // from react-native
+                width={Dimensions.get("window").width -20} // from react-native
                 height={220}
                 yAxisLabel=""
                 yAxisSuffix=" ppm"
@@ -86,9 +86,9 @@ export default function App() {
             />
 
             {/* Alerts and Notifications */}
-            <Text style={styles.sectionTitle}>Alerts</Text>
+            <Text style={styles.sectionTitle}>Gas Reading</Text>
             {isLoading ? (
-                <View style={styles.alertBox}>
+                <View style={styles.alertBox4}>
                     <ActivityIndicator size="large" color="white" />
                     <Text style={styles.alertText}>Loading gas levels...</Text>
                 </View>
@@ -98,7 +98,7 @@ export default function App() {
                 </View>
             ) : gasLevel > 950 ? (
                 <View style={styles.alertBox}>
-                    <Text style={styles.alertText}>Warning: High Gas Level Detected! {gasLevel} ppm</Text>
+                    <Text style={styles.alertText}>Warning: High Gas Level Detected!<br/>    Gas Reading: {gasLevel}ppm</Text>
                 </View>
             ) : (
                 <View style={styles.alertBox3}>
@@ -186,6 +186,18 @@ const styles = StyleSheet.create({
     },
     alertBox2:{
         backgroundColor: "black",
+        padding: 10,
+        borderRadius: 8,
+        marginVertical: 10,
+    },
+    alertBox3:{
+        backgroundColor: "green",
+        padding: 10,
+        borderRadius: 8,
+        marginVertical: 10,
+    },
+    alertBox4:{
+        backgroundColor: "brown",
         padding: 10,
         borderRadius: 8,
         marginVertical: 10,
