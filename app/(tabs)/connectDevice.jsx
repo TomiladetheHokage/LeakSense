@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TextInput, Button, Alert } from "react-native";
 import qs from "qs";
+import {router} from "expo-router";
 
 export default function ConnectDevice({ navigation }) {
     const [ssid, setSsid] = useState("");
@@ -21,7 +22,7 @@ export default function ConnectDevice({ navigation }) {
         };
 
         try {
-            const response = await fetch("http://192.168.4.1", { 
+            const response = await fetch("http://192.168.4.1", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -34,9 +35,8 @@ export default function ConnectDevice({ navigation }) {
                 setButtonText("Connect"); // Reset button text on success
                 // Navigate to another screen if needed
                 console.log("Response OK!:", response.status);
-                if (navigation && navigation.navigate) {
-                    navigation.navigate("home");
-                }
+                // router.push("/home");
+                router.push("/home");
             } else {
                 Alert.alert("Connection Failed", "Failed to connect to the device.");
                 setButtonText("Try Again"); // Change button text on failure
@@ -46,6 +46,7 @@ export default function ConnectDevice({ navigation }) {
             Alert.alert("Error", "An error occurred while connecting to the device.");
             setButtonText("Try Again"); // Change button text on error
             console.error("Error:", error);
+            router.push("/home");
         }
     };
 

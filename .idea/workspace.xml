@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f11f73a-6e7c-44a5-8cce-d0f382ccf65b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/connectDevice.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/home.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/signUp.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/notifications.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/settings.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/connectDevice.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/connectDevice.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -60,7 +60,11 @@
       <updated>1736857927444</updated>
       <workItem from="1736857929352" duration="28720000" />
       <workItem from="1738135561913" duration="3563000" />
-      <workItem from="1738230725802" duration="4312000" />
+      <workItem from="1738230725802" duration="6986000" />
+      <workItem from="1738251416139" duration="13415000" />
+      <workItem from="1738325018399" duration="4605000" />
+      <workItem from="1738687217541" duration="628000" />
+      <workItem from="1738875502455" duration="13528000" />
     </task>
     <servers />
   </component>
