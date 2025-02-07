@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Switch, Image, ActivityIndicator, Button, TouchableOpacity } from "react-native";
-import { LineChart } from "react-native-chart-kit";
-import { Dimensions } from "react-native";
-import { Ionicons } from '@expo/vector-icons'; // Import icons from Expo
+import React, {useEffect, useState} from "react";
+import {ActivityIndicator, Dimensions, Image, StyleSheet, Switch, Text, TouchableOpacity, View} from "react-native";
+import {LineChart} from "react-native-chart-kit";
+import {Ionicons} from '@expo/vector-icons';
+import {router} from "expo-router";
 
 export default function App() {
     const [isFlameDetectorOn, setFlameDetectorOn] = useState(false);
@@ -25,6 +25,13 @@ export default function App() {
             const response = await fetch("http://192.168.137.100/gasReading");
             const text = await response.text();
             const level = extractGasLevel(text);
+
+            if (level !== null) {
+                setGasData((prevData) => {
+                     // Keep only last 7 values
+                    return [...prevData.slice(1), level];
+                });
+            }
             setGasLevel(level);
         } catch (error) {
             console.error("Error fetching gas level:", error);
@@ -32,6 +39,7 @@ export default function App() {
         }
         setIsLoading(false);
     };
+
 
     const extractGasLevel = (html) => {
         const match = html.match(/Current Gas Level: (\d+)/);
@@ -139,15 +147,15 @@ export default function App() {
                     <Ionicons name="wifi-outline" size={24} color="black" />
                     <Text style={styles.menuText}>Connect to Device</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem}>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("notifications")}>
                     <Ionicons name="notifications-outline" size={24} color="black" />
                     <Text style={styles.menuText}>Notifications</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem}>
+                <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("settings")}>
                     <Ionicons name="settings-outline" size={24} color="black" />
                     <Text style={styles.menuText}>Settings</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.menuItem}>
+                <TouchableOpacity style={styles.menuItem} onPress={() => router.push("/")}>
                     <Ionicons name="log-out-outline" size={24} color="black" />
                     <Text style={styles.menuText}>Log Out</Text>
                 </TouchableOpacity>
